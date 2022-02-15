@@ -32,15 +32,6 @@
     transform: translateX(-$size);
 }
 
-
-
-
-
-
-
-
-
-
 @function set-text-color($color){
     @if(lightness($color)>40%){
         @return #000;
@@ -48,3 +39,6 @@
         @return #fff;
     }
 };
+@function font-weight($size,$max: 3rem){
+    @return clamp(0.75rem,$size,$max);
+}

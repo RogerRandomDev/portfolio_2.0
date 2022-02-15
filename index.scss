@@ -8,47 +8,81 @@ $color2:#599EFF;
 $border-color: #333;
 $text-color:#000;
 $dark-mode:false;
-$font-weight:2rem;
+
 
 
 body{
     @import "./partials/mixins";
     background-color: $background0;
+    font-size: clamp(0.75rem,5vw,3rem);
     margin:0;
     margin:0 12.5%;
+    display:flex;
+    flex-direction: column;
+    gap: 1.25rem 0;
     #top_holder{
-        position:fixed;
+        position:relative;
         left:12.5%;
         width: 75%;
-        height: 0%;
+        z-index: 1000;
         #top_nav{
             @include flex_h;
             
             width: 100%;
-            min-height: $font-weight*2.5;
-            font-size: $font-weight;
-            gap:12.5%;
+            height: font-weight(5vw,5rem);
+            font-size: font-weight(5vw,5rem);
+            gap:0% 12.5%;
             border-bottom-left-radius: 16px;
             border-bottom-right-radius: 16px;
             align-self: center;
+            align-items: stretch;
+            align-content: stretch;
             background-color: $color0;
             @include border(8px,$background1);
             button{
                 align-self: Stretch;
-                font-size: $font-weight;
+                justify-self: stretch;
+                font-size: font-weight(1.25vw);
                 width: 25%;
                 background-color: $color1;
                 border-color: $background0;
-                border-width: 4px;
+                border-width: clamp(0.5rem,0.5vw,1rem);
                 border-style:groove;
+                max-height: 100%;
+                justify-items: flex-start;
+                align-items: center;
+                display:flex;
+                flex-direction: column;
+                gap:clamp(1rem,5vw,5rem);
+                div{
+                    position:absolute;
+                    background-color: $color0;
+                    @include border(clamp(0.5rem,0.5vw,1rem),$background1);
+                    border-style: outset;
+                    width:25%;
+                    
+                    transform-origin: 0% 0%;
+                    transform: scale(1,0);
+                    margin-top: clamp(1rem,5vw,5rem);
+                    transition-duration: 0.5s;
+                    z-index: 1000 !important;
+                    border-radius: 0px 0px clamp(0.5rem,0.5vw,1rem) clamp(0.5rem,0.5vw,1rem);
+                }
+
             }
             button:active{
                 border-color:$background1;
-                border-width: 8px;
+                border-width: clamp(0.5rem,0.5vw,1rem);
+            }
+            button:hover{
+                div{
+                    transform: scale(1,1);
+                }
             }
         }
         @include flex-h;
         #hideButton{
+            text-align: center;
             position:relative;
             top:100%;
             margin-left: auto;
@@ -57,14 +91,113 @@ body{
             @include border(4px,$background1);
             border-top-width: 0px;
             border-radius: 0px 0px 4px 4px;
-            z-index: 1000;
         }
         
     };
-    #main_body{
+    #main_body{margin-top: font-weight(1.25vw);}
+
+    .body_of{
+        @include border(8px,$color0);
+        min-height: 50vh;
+        overflow: hidden;
         display:flex;
-        @include border(8px,$color2);
-        z-index: 0;
-        transform: translateY($font-weight*3.75);
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-items: baseline;
+        width:100%;
+        font-size: font-weight(1.25vw);
+        background-color: $color2;
+    }
+    .banner_l{
+        border-style: solid;
+        background-color: $color1;
+        width:15rem;
+        left:0%;
+        align-self: flex-start;
+        border-color: $background1;
+        height: 6.25rem;
+        border-width: 4px;
+        border-left: 0px;
+        color: set-text-color($color1);
+        transform-origin: left top;
+        transform:rotateZ(75deg);
+        border-radius: 0% 5% 37.5% 0%;
+        float:left;
+        transition-duration: 0.5s;
+    }
+    .banner_l:hover{
+        transform:rotateZ(2.25deg);
+    }
+    .banner_r{
+        border-style: solid;
+        background-color: $color1;
+        width:15rem;
+        align-self: flex-end;
+        position:relative;
+        right:0%;
+        border-color: $background1;
+        height: 6.25rem;
+        border-width: 4px;
+        border-right: 0px;
+        color: set-text-color($color1);
+        transform-origin: right top;
+        transform:rotateZ(-75deg);
+        border-radius: 5% 0% 0% 37.5%;
+        float:right;
+        transition-duration: 0.5s;
+    }
+    .banner_r:hover{
+        transform:rotateZ(-2.25deg);
+    }
+    #Projects{
+        display:inline;
+    }
+    .project_box_l{
+        align-self: flex-start;
+        float:left;
+        width:auto;
+        a{  
+            div{
+                width: clamp(10rem,12.5vw,25rem);
+            height: clamp(10rem,12.5vw,25rem);
+            background-color: $background0;
+            transition-duration: 0.5s;
+            margin-left: clamp(-9rem,-12.5vw,-24rem);
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+            }
+            div:hover{margin-left: 0rem;}
+        }
+    }
+    .project_box_r{
+        float:right;
+        align-self: flex-end;
+        a{  
+            width: clamp(10rem,12.5vw,25rem);
+            height: clamp(10rem,12.5vw,25rem);
+            background-color: $background0;
+            transform:translateX(clamp(10rem,12.5vw,25rem));
+            transition-duration: 0.5s;
+            margin-right: 1rem;
+        }
+        a:hover{transform:translateX(0);margin-right: 0rem;}
+    }
+    
+}
+
+@media screen and (max-width:1024px){
+    body{
+        #top_holder{
+            #top_nav{
+                button{
+                    div{
+                        font-size: font-weight(1.25vw);
+                    }
+                    font-size: font-weight(1.25vw);
+                }
+            }
+        }
     }
 }
