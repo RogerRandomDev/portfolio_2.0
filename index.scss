@@ -1,0 +1,70 @@
+$background0:#E0A738;
+$background1:#946407;
+$color0:#397EE0;
+$color1:#164B94;
+$color2:#599EFF;
+
+
+$border-color: #333;
+$text-color:#000;
+$dark-mode:false;
+$font-weight:2rem;
+
+
+body{
+    @import "./partials/mixins";
+    background-color: $background0;
+    margin:0;
+    margin:0 12.5%;
+    #top_holder{
+        position:fixed;
+        left:12.5%;
+        width: 75%;
+        height: 0%;
+        #top_nav{
+            @include flex_h;
+            
+            width: 100%;
+            min-height: $font-weight*2.5;
+            font-size: $font-weight;
+            gap:12.5%;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            align-self: center;
+            background-color: $color0;
+            @include border(8px,$background1);
+            button{
+                align-self: Stretch;
+                font-size: $font-weight;
+                width: 25%;
+                background-color: $color1;
+                border-color: $background0;
+                border-width: 4px;
+                border-style:groove;
+            }
+            button:active{
+                border-color:$background1;
+                border-width: 8px;
+            }
+        }
+        @include flex-h;
+        #hideButton{
+            position:relative;
+            top:100%;
+            margin-left: auto;
+            margin-right: 16px;
+            width:12.5%;
+            @include border(4px,$background1);
+            border-top-width: 0px;
+            border-radius: 0px 0px 4px 4px;
+            z-index: 1000;
+        }
+        
+    };
+    #main_body{
+        display:flex;
+        @include border(8px,$color2);
+        z-index: 0;
+        transform: translateY($font-weight*3.75);
+    }
+}

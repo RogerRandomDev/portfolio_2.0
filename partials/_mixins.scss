@@ -1,0 +1,50 @@
+@mixin flex_h{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+@mixin center_content{
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+@mixin center{
+    align-self: center;
+    justify-self: center;
+}
+@mixin center-self{
+    margin:auto;
+    left:auto;
+    right:auto;
+}
+@mixin theme($dark-theme:true,$main-color:#fff,$text-color:#000){
+    @if $dark-theme{
+        background: darken($main-color,100%);
+        color:lighten($text-color,100%);
+    }
+};
+
+@mixin border($size,$color,$type:solid){
+    border-style: $type;
+    border-color: $color;
+    border-width: $size;
+    transform: translateX(-$size);
+}
+
+
+
+
+
+
+
+
+
+
+@function set-text-color($color){
+    @if(lightness($color)>40%){
+        @return #000;
+    }@else{
+        @return #fff;
+    }
+};
