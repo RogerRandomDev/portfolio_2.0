@@ -1,11 +1,17 @@
+img {
+  border-style: none;
+}
+
 body {
-  background-color: #E0A738;
+  background-color: #380908;
   font-size: clamp(0.75rem, 5vw, 3rem);
   margin: 0;
   margin: 0 12.5%;
   display: flex;
   flex-direction: column;
   gap: 1.25rem 0;
+  text-align: center;
+  color: #fff;
 }
 
 body #top_holder {
@@ -25,12 +31,11 @@ body #top_holder #top_nav {
   width: 100%;
   height: clamp(0.75rem, 5vw, 5rem);
   font-size: clamp(0.75rem, 5vw, 5rem);
-  gap: 0% 12.5%;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   align-self: center;
   align-items: stretch;
-  align-content: stretch;
+  justify-content: stretch;
   background-color: #397EE0;
   border-style: solid;
   border-color: #946407;
@@ -38,16 +43,27 @@ body #top_holder #top_nav {
   transform: translateX(-8px);
 }
 
-body #top_holder #top_nav button {
+body #top_holder #top_nav :first-child {
+  margin-left: 0;
+}
+
+body #top_holder #top_nav :last-child {
+  margin-right: 0;
+}
+
+body #top_holder #top_nav a {
+  color: #fff;
   align-self: Stretch;
   justify-self: stretch;
   font-size: clamp(0.75rem, 1.25vw, 3rem);
-  width: 25%;
+  width: 22.5%;
+  margin: 0 auto;
   background-color: #164B94;
   border-color: #E0A738;
   border-width: clamp(0.5rem, 0.5vw, 1rem);
   border-style: groove;
   max-height: 100%;
+  max-width: 22.5%;
   justify-items: flex-start;
   align-items: center;
   display: flex;
@@ -55,7 +71,7 @@ body #top_holder #top_nav button {
   gap: clamp(1rem, 5vw, 5rem);
 }
 
-body #top_holder #top_nav button div {
+body #top_holder #top_nav a div {
   position: absolute;
   background-color: #397EE0;
   border-style: solid;
@@ -72,12 +88,12 @@ body #top_holder #top_nav button div {
   border-radius: 0px 0px clamp(0.5rem, 0.5vw, 1rem) clamp(0.5rem, 0.5vw, 1rem);
 }
 
-body #top_holder #top_nav button:active {
+body #top_holder #top_nav a:active {
   border-color: #946407;
   border-width: clamp(0.5rem, 0.5vw, 1rem);
 }
 
-body #top_holder #top_nav button:hover div {
+body #top_holder #top_nav a:hover div {
   transform: scale(1, 1);
 }
 
@@ -98,6 +114,11 @@ body #top_holder #hideButton {
 
 body #main_body {
   margin-top: clamp(0.75rem, 1.25vw, 3rem);
+  border-radius: clamp(1rem, 1vw, 2.5rem) clamp(1rem, 1vw, 2.5rem) 0rem 0rem;
+}
+
+body #Resume {
+  border-radius: 0rem 0rem clamp(1rem, 1vw, 2.5rem) clamp(1rem, 1vw, 2.5rem);
 }
 
 body .body_of {
@@ -168,7 +189,6 @@ body #Projects {
 
 body .project_box_l {
   align-self: flex-start;
-  float: left;
   width: auto;
 }
 
@@ -188,29 +208,48 @@ body .project_box_l a div:hover {
 }
 
 body .project_box_r {
-  float: right;
   align-self: flex-end;
 }
 
-body .project_box_r a {
+body .project_box_r a div {
   width: clamp(10rem, 12.5vw, 25rem);
   height: clamp(10rem, 12.5vw, 25rem);
   background-color: #E0A738;
-  transform: translateX(clamp(10rem, 12.5vw, 25rem));
   transition-duration: 0.5s;
-  margin-right: 1rem;
+  margin-right: clamp(-9rem, -12.5vw, -24rem);
+  text-align: center;
 }
 
-body .project_box_r a:hover {
-  transform: translateX(0);
+body .project_box_r a div:hover {
   margin-right: 0rem;
 }
 
+body a {
+  text-decoration: none;
+}
+
+body .l_side {
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+
+body .r_side {
+  float: right;
+  display: flex;
+  flex-direction: column;
+}
+
+body .project_box_l img, body .project_box_r img {
+  max-width: 87.5%;
+  max-height: 87.5%;
+}
+
 @media screen and (max-width: 1024px) {
-  body #top_holder #top_nav button {
+  body #top_holder #top_nav a {
     font-size: font-weight(1.25vw);
   }
-  body #top_holder #top_nav button div {
+  body #top_holder #top_nav a div {
     font-size: font-weight(1.25vw);
   }
 }

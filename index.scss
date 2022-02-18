@@ -1,5 +1,6 @@
 $background0:#E0A738;
 $background1:#946407;
+$background2:#380908;
 $color0:#397EE0;
 $color1:#164B94;
 $color2:#599EFF;
@@ -10,16 +11,20 @@ $text-color:#000;
 $dark-mode:false;
 
 
-
+img{
+    border-style: none
+}
 body{
     @import "./partials/mixins";
-    background-color: $background0;
+    background-color: $background2;
     font-size: clamp(0.75rem,5vw,3rem);
     margin:0;
     margin:0 12.5%;
     display:flex;
     flex-direction: column;
     gap: 1.25rem 0;
+    text-align: center;
+    color:#fff;
     #top_holder{
         position:relative;
         left:12.5%;
@@ -27,28 +32,31 @@ body{
         z-index: 1000;
         #top_nav{
             @include flex_h;
-            
             width: 100%;
             height: font-weight(5vw,5rem);
             font-size: font-weight(5vw,5rem);
-            gap:0% 12.5%;
             border-bottom-left-radius: 16px;
             border-bottom-right-radius: 16px;
             align-self: center;
             align-items: stretch;
-            align-content: stretch;
+            justify-content: stretch;
             background-color: $color0;
             @include border(8px,$background1);
-            button{
+            :first-child{margin-left: 0;}
+            :last-child{margin-right: 0;}
+            a{
+                color:set-text-color($color1);
                 align-self: Stretch;
                 justify-self: stretch;
                 font-size: font-weight(1.25vw);
-                width: 25%;
+                width: 22.5%;
+                margin: 0 auto;
                 background-color: $color1;
                 border-color: $background0;
                 border-width: clamp(0.5rem,0.5vw,1rem);
                 border-style:groove;
                 max-height: 100%;
+                max-width: 22.5%;
                 justify-items: flex-start;
                 align-items: center;
                 display:flex;
@@ -68,13 +76,12 @@ body{
                     z-index: 1000 !important;
                     border-radius: 0px 0px clamp(0.5rem,0.5vw,1rem) clamp(0.5rem,0.5vw,1rem);
                 }
-
             }
-            button:active{
+            a:active{
                 border-color:$background1;
                 border-width: clamp(0.5rem,0.5vw,1rem);
             }
-            button:hover{
+            a:hover{
                 div{
                     transform: scale(1,1);
                 }
@@ -94,8 +101,8 @@ body{
         }
         
     };
-    #main_body{margin-top: font-weight(1.25vw);}
-
+    #main_body{margin-top: font-weight(1.25vw);border-radius: clamp(1rem,1vw,2.5rem) clamp(1rem,1vw,2.5rem) 0rem 0rem;}
+    #Resume{border-radius: 0rem 0rem clamp(1rem,1vw,2.5rem) clamp(1rem,1vw,2.5rem);}
     .body_of{
         @include border(8px,$color0);
         min-height: 50vh;
@@ -155,7 +162,6 @@ body{
     }
     .project_box_l{
         align-self: flex-start;
-        float:left;
         width:auto;
         a{  
             div{
@@ -172,26 +178,46 @@ body{
         }
     }
     .project_box_r{
-        float:right;
         align-self: flex-end;
         a{  
+
+            div{
             width: clamp(10rem,12.5vw,25rem);
             height: clamp(10rem,12.5vw,25rem);
             background-color: $background0;
-            transform:translateX(clamp(10rem,12.5vw,25rem));
             transition-duration: 0.5s;
-            margin-right: 1rem;
-        }
-        a:hover{transform:translateX(0);margin-right: 0rem;}
+            margin-right: clamp(-9rem,-12.5vw,-24rem);
+            text-align: center;
+            }
+            div:hover{margin-right:0rem}
     }
-    
+    }
+    a{
+        text-decoration: none;
+    }
+    .l_side{
+        float:left;
+        display:flex;
+        flex-direction: column;
+    }
+    .r_side{
+        float:right;
+        display:flex;
+        flex-direction: column;
+    }
+    .project_box_l, .project_box_r{
+        img{
+            max-width: 87.5%;
+            max-height: 87.5%;
+        }
+    }
 }
 
 @media screen and (max-width:1024px){
     body{
         #top_holder{
             #top_nav{
-                button{
+                a{
                     div{
                         font-size: font-weight(1.25vw);
                     }
